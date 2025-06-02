@@ -1,24 +1,21 @@
 // swift-tools-version: 6.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
     name: "BackgammonCore",
+    platforms: [
+        .visionOS(.v2)      // same floor as the other modules
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "BackgammonCore",
-            targets: ["BackgammonCore"]),
+        .library(name: "BackgammonCore", targets: ["BackgammonCore"])
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "BackgammonCore"),
+            name: "BackgammonCore",
+            path: "Sources"),
         .testTarget(
             name: "BackgammonCoreTests",
-            dependencies: ["BackgammonCore"]
-        ),
+            dependencies: ["BackgammonCore"],
+            path: "Tests")
     ]
 )
